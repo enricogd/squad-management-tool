@@ -1,4 +1,5 @@
 import { ITeams } from 'src/interfaces/teams'
+
 import { PLAYERS } from './players'
 
 export const TEAMS: ITeams[] = [

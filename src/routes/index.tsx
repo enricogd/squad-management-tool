@@ -1,6 +1,7 @@
 import React from 'react'
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import PageTemplate from 'src/templates/PageTemplate'
+
 import { routesData } from './routesData'
 
 export default function Routes() {
