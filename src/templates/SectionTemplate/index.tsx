@@ -1,5 +1,5 @@
 import React from 'react'
-
+import * as S from './styles'
 export default function SectionTemplate({
   children,
 }: {
@@ -7,7 +7,7 @@ export default function SectionTemplate({
 }) {
   return (
     <>
-      <section>{children}</section>
+      <S.Section>{children}</S.Section>
     </>
   )
 }
