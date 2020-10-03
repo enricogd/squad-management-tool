@@ -15,5 +15,6 @@ it('should render a headline', () => {
 
 it('should render an avatar', () => {
   const { getByTestId } = render(<Header />)
-  expect(getByTestId('logo')).toHaveAttribute('src')
+  expect(getByTestId('user-name')).toBeInTheDocument()
+  expect(getByTestId('user-image')).toBeInTheDocument()
 })
