@@ -1,0 +1,37 @@
+export default {
+  colors: {
+    primary: '#8a206f',
+    secondary: '#c00e4f',
+    tertiary: '#9c66b4',
+    quaternary: '#cc9abe',
+    darkGrey: '#2b2b2b',
+    grey: '#9c9998',
+    lightGrey: '#f7f7f7',
+    pageBg: '#f7f3f7',
+    sectionBg: '#ffffff',
+    error: '#cf2f62',
+    horizontalGradient: 'linear-gradient(to right, #c00e4f, #8b206f)',
+    verticalGradient: 'linear-gradient( #a8397d, #7e2e80)',
+  },
+  breakPoints: {
+    lg: 1200,
+    md: 992,
+    sm: 768,
+    xs: 576,
+  },
+  font: {
+    light: 300,
+    normal: 400,
+    medium: 500,
+    bold: 700,
+    sizes: {
+      base: 16,
+      xsmall: '1.2rem',
+      small: '1.4rem',
+      medium: '1.6rem',
+      large: '1.8rem',
+      xlarge: '2.0rem',
+      xxlarge: '2.8rem',
+    },
+  },
+}

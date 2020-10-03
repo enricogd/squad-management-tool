@@ -1,20 +1,27 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-html { height: 100%; overflow: auto; }
-body {
-	font-size: 16px;
-	height: 100%;
-	margin: 0px;
-	overflow-x: hidden;
-	padding: 0px;
-	width: 100%;
-  	font-family:  'Roboto', sans-serif;
-	  @media (max-width: 768px) {
-		font-size: 14px;
+
+	* {
+		margin: 0;
+		padding: 0;
+		outline: 0;
+		box-sizing: border-box;
+		}	
+
+	html {
+		font-size: 16px;
 	}
-}
-  * {
-    outline: 0;
-  }
+
+	body {
+		font-family: 'Roboto', sans-serif;
+	}
+
+	img {
+		vertical-align: middle;
+		border-style: none;
+		max-width: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
 `
