@@ -15,11 +15,11 @@ export interface IApiTeamsResponse {
   venue_capacity: number
 }
 
-export interface ITeams {
-  description?: string
+export interface ITeam {
+  description: string
   name: string
-  players: IPlayer[]
-  tags?: string[]
+  players: IPlayer[] | []
+  tags: string[] | []
   type: 'real' | 'fantasy'
   website: string
   formation: number[]

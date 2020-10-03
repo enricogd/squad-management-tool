@@ -10,6 +10,7 @@ export const TEAMS: ITeams[] = [
     type: 'real',
     tags: ['euro', 'champions', 'spanish'],
     players: [PLAYERS[0], PLAYERS[1]],
+    formation: [1, 2, 3],
   },
   {
     name: 'Not Real Madrid',
@@ -18,5 +19,6 @@ export const TEAMS: ITeams[] = [
     type: 'fantasy',
     tags: ['euro', 'atk', 'best'],
     players: [PLAYERS[2], PLAYERS[3]],
+    formation: [3, 2, 1],
   },
 ]
