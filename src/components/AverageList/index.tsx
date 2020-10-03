@@ -3,9 +3,8 @@ import SectionTemplate from 'templates/SectionTemplate'
 
 export default function AverageList() {
   return (
-    <SectionTemplate>
+    <SectionTemplate title="Top 5">
       <>
-        <h2>Top 5</h2>
         <table>
           <thead>
             <td>name</td>
