@@ -1,8 +1,8 @@
-import { ITeams } from 'src/interfaces/teams'
+import { ITeam } from 'interfaces/team'
 
 import { PLAYERS } from './players'
 
-export const TEAMS: ITeams[] = [
+export const TEAMS: ITeam[] = [
   {
     name: 'Barcelona',
     description: 'Barcelona Squad',
@@ -14,7 +14,7 @@ export const TEAMS: ITeams[] = [
   },
   {
     name: 'Not Real Madrid',
-    description: undefined,
+    description: '',
     website: 'https://www.realmadrid.com/en',
     type: 'fantasy',
     tags: ['euro', 'atk', 'best'],

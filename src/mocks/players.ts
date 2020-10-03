@@ -1,4 +1,4 @@
-import { IPlayer } from 'src/interfaces/player'
+import { IPlayer } from 'interfaces/player'
 
 export const PLAYERS: IPlayer[] = [
   {

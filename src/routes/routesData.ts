@@ -1,5 +1,5 @@
-import CreateTeam from 'src/pages/CreateTeam'
-import MyTeam from 'src/pages/MyTeam'
+import CreateTeam from 'pages/CreateTeam'
+import MyTeam from 'pages/MyTeam'
 
 export const routesEnum = {
   MY_TEAM: '/',

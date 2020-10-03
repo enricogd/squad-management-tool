@@ -1,5 +1,5 @@
 import React from 'react'
-import SectionTemplate from 'src/templates/SectionTemplate'
+import SectionTemplate from 'templates/SectionTemplate'
 
 export default function TeamTable() {
   return (

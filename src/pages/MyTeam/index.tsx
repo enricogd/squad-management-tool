@@ -1,6 +1,6 @@
 import React from 'react'
-import AverageList from 'src/components/AverageList'
-import TeamTable from 'src/components/TeamTable'
+import AverageList from 'components/AverageList'
+import TeamTable from 'components/TeamTable'
 
 export default function MyTeam() {
   return (
