@@ -14,7 +14,7 @@ export const Header = styled.header`
     width: 100%;
 
     h1 {
-      font-size: ${theme.font.sizes.medium};
+      font-size: ${theme.font.sizes.large};
       ${fontType('r')}
     }
   `}
@@ -71,7 +71,7 @@ export const UserAvatar = styled.div`
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      font-size: ${theme.font.sizes.medium};
+      font-size: ${theme.font.sizes.large};
       ${fontType('m')};
     }
   `}
