@@ -1,13 +1,15 @@
 import React from 'react'
 import * as S from './styles'
-export default function SectionTemplate({
-  children,
-}: {
-  children: JSX.Element
-}) {
+import { ISectionProps } from './types'
+export default function SectionTemplate(props: ISectionProps) {
+  const { children, title, onClick } = props
   return (
-    <>
-      <S.Section>{children}</S.Section>
-    </>
+    <S.Section>
+      <S.Header>
+        <h2>{title}</h2>
+        {onClick && <S.Button>+</S.Button>}
+      </S.Header>
+      <S.Main>{children}</S.Main>
+    </S.Section>
   )
 }
