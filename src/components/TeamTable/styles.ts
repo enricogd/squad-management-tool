@@ -77,6 +77,7 @@ export const Table = styled.table`
 
     td {
       padding: 1rem 0 1rem 1rem;
+      align-items: center;
       ${fontType('b')}
       &:first-child {
         padding: 1rem;
