@@ -10,6 +10,8 @@ import {
 } from 'react-icons/ti'
 import ReactTooltip from 'react-tooltip'
 import { ISortBy } from './types'
+import { useHistory } from 'react-router-dom'
+import { routesEnum } from 'routes/routesData'
 
 export default function TeamTable() {
   const [list, setList] = useState(TEAMS)
@@ -17,6 +19,8 @@ export default function TeamTable() {
     header: 'default',
     order: 'asc',
   })
+
+  const history = useHistory()
 
   useMemo(() => {
     const { header, order } = sortBy
@@ -84,7 +88,11 @@ export default function TeamTable() {
                 <td>
                   <p>{team.description}</p>
                   <S.ButtonsWrapper>
-                    <MdDelete data-tip data-for="delete" />
+                    <MdDelete
+                      data-tip
+                      data-for="delete"
+                      onClick={() => setList(list.filter((x) => !(x === team)))}
+                    />
                     <ReactTooltip effect="solid" id="delete">
                       Delete
                     </ReactTooltip>
@@ -98,7 +106,13 @@ export default function TeamTable() {
                     <ReactTooltip effect="solid" id="share">
                       Share
                     </ReactTooltip>
-                    <MdEdit data-tip data-for="edit" />
+                    <MdEdit
+                      data-tip
+                      data-for="edit"
+                      onClick={() => {
+                        history.push(routesEnum.CREATE_TEAM)
+                      }}
+                    />
                     <ReactTooltip effect="solid" id="edit">
                       Edit
                     </ReactTooltip>
