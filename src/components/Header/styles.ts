@@ -41,18 +41,6 @@ export const Logo = styled.img.attrs({
   width: 50px;
 `
 
-export const UserAvatarContainer = styled.div`
-  align-items: center;
-  border-radius: 50%;
-  display: flex;
-  height: 64px;
-  justify-content: center;
-  justify-self: flex-end;
-  padding: 4px 16px 4px 8px;
-  width: 64px;
-  z-index: 1;
-`
-
 export const UserAvatar = styled.div`
   ${({ theme }) => css`
     background: white;

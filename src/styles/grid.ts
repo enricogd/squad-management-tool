@@ -7,8 +7,10 @@ export const Grid = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 `
 
 export const Col = styled.div`
   flex: ${(props: { size: number }) => props.size};
+  flex-direction: column;
 `
