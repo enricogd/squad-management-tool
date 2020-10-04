@@ -49,6 +49,13 @@ export const Table = styled.table`
 
     th {
       padding: 1.5rem 0 1.5rem 1rem;
+      cursor: pointer;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
       &:first-of-type {
         width: 33%;

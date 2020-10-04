@@ -1,5 +1,5 @@
 import { TEAMS } from 'mocks/teams'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import SectionTemplate from 'templates/SectionTemplate'
 import * as S from './styles'
 import { MdEdit, MdDelete, MdShare } from 'react-icons/md'
@@ -8,46 +8,54 @@ import {
   TiArrowSortedDown,
   TiArrowSortedUp,
 } from 'react-icons/ti'
-import { ITeam } from 'interfaces/team'
+import ReactTooltip from 'react-tooltip'
+import { ISortBy } from './types'
 
 export default function TeamTable() {
   const [list, setList] = useState(TEAMS)
+  const [sortBy, setSortBy] = useState<ISortBy>({
+    header: 'default',
+    order: 'asc',
+  })
 
-  const [sortBy, setSortBy] = useState({ header: '', order: '' })
-
-  // export function sortDate(param: string) {
-  //   return (rowA: Row, rowB: Row, _: string, __: boolean) => {
-  //     const a = reverseDate(rowA.values[param])
-  //     const b = reverseDate(rowB.values[param])
-
-  //     if (a < b) return -1
-  //     if (a > b) return 1
-  //     return 0
-  //   }
-  // }
-
-  const sorter = (a: ITeam, b: ITeam) => {
+  useMemo(() => {
     const { header, order } = sortBy
-    if (header === 'Name') {
+    if (header === 'default') return
+    let sortedList = [...list].sort((a, b) => {
+      if (a[header] < b[header]) return order === 'asc' ? -1 : 1
+      if (a[header] > b[header]) return order === 'asc' ? 1 : -1
+      return 0
+    })
+
+    setList(sortedList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortBy])
+
+  const sortRowsBy = (col: ISortBy['header']) => () => {
+    const { header, order } = sortBy
+
+    const shouldChangeOrder = header === col
+
+    if (shouldChangeOrder) {
+      const newOrder = order === 'asc' ? 'desc' : 'asc'
+
+      setSortBy((x) => ({ ...x, order: newOrder }))
+
+      return
     }
-    let result = a.name.localeCompare(b.name)
+
+    setSortBy({ header: col, order: 'asc' })
   }
 
-  // const sortRowsBy = (field) => () => {
-  // 	const { header, order: oldOrder } = sortBy
-
-  // 	const shouldChangeOrder = header === field
-
-  // 	if (shouldChangeOrder) {
-  // 		const order = oldOrder === 'asc' ? 'desc' : 'asc'
-
-  // 		setSortBy((s) => ({ ...s, order }))
-
-  // 		return
-  // 	}
-
-  // 	setSortBy({ header: field, order: 'asc' })
-  // }
+  const handleSortIcon = (col: ISortBy['header']) => {
+    const { header, order } = sortBy
+    if (col === 'default') return
+    if (header === col) {
+      // TODO: check if sorted down is asc or desc in other websites
+      return order === 'asc' ? <TiArrowSortedDown /> : <TiArrowSortedUp />
+    }
+    return <TiArrowUnsorted />
+  }
 
   return (
     <SectionTemplate title="My Teams" onClick={() => {}}>
@@ -55,8 +63,18 @@ export default function TeamTable() {
         <S.Table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
+              <th onClick={sortRowsBy('name')}>
+                <div>
+                  <p>Name</p>
+                  {handleSortIcon('name')}
+                </div>
+              </th>
+              <th onClick={sortRowsBy('description')}>
+                <div>
+                  <p>Description</p>
+                  {handleSortIcon('description')}
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -66,9 +84,24 @@ export default function TeamTable() {
                 <td>
                   <p>{team.description}</p>
                   <S.ButtonsWrapper>
-                    <MdDelete />
-                    <MdShare />
-                    <MdEdit />
+                    <MdDelete data-tip data-for="delete" />
+                    <ReactTooltip effect="solid" id="delete">
+                      Delete
+                    </ReactTooltip>
+                    <MdShare
+                      data-tip
+                      data-for="share"
+                      onClick={() =>
+                        alert('This feature is still under construction 👷‍♂️🛠')
+                      }
+                    />
+                    <ReactTooltip effect="solid" id="share">
+                      Share
+                    </ReactTooltip>
+                    <MdEdit data-tip data-for="edit" />
+                    <ReactTooltip effect="solid" id="edit">
+                      Edit
+                    </ReactTooltip>
                   </S.ButtonsWrapper>
                 </td>
               </tr>
