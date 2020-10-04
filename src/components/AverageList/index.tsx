@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Row, Col } from 'styles/grid'
+import { Grid, Row } from 'styles/grid'
 import SectionTemplate from 'templates/SectionTemplate'
 import * as S from './styles'
 
@@ -9,7 +9,7 @@ export default function AverageList() {
       <S.Wrapper title="Top 5">
         <Grid>
           <Row>
-            <Col size={1}>
+            <S.Col size={1}>
               <S.AvgTitle>Highest avg age</S.AvgTitle>
               <S.AvgList>
                 <S.ListItem>
@@ -33,9 +33,9 @@ export default function AverageList() {
                   <span>12.5</span>
                 </S.ListItem>
               </S.AvgList>
-            </Col>
+            </S.Col>
 
-            <Col size={1}>
+            <S.Col size={1}>
               <S.AvgTitle>Lowest avg age</S.AvgTitle>
               <S.AvgList>
                 <S.ListItem>
@@ -47,8 +47,8 @@ export default function AverageList() {
                   <span>12.1</span>
                 </S.ListItem>
                 <S.ListItem>
-                  <span>Inter Milan</span>
-                  <span>12</span>
+                  <span>Inter</span>
+                  <span>12.0</span>
                 </S.ListItem>
                 <S.ListItem>
                   <span>Inter Milan</span>
@@ -59,7 +59,7 @@ export default function AverageList() {
                   <span>12.5</span>
                 </S.ListItem>
               </S.AvgList>
-            </Col>
+            </S.Col>
           </Row>
         </Grid>
       </S.Wrapper>

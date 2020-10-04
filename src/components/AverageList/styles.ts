@@ -1,8 +1,18 @@
 import styled, { css } from 'styled-components'
-import { fontType } from 'styles/helpers'
+import { fontType, mediaQuery } from 'styles/helpers'
 
 export const Wrapper = styled.div`
   padding: 2rem 0;
+`
+
+export const Col = styled.div`
+  flex: ${(props: { size: number }) => props.size};
+  flex-direction: column;
+  margin: 0 1rem;
+
+  ${mediaQuery('xs')(`
+    margin: 0.5rem;
+  `)}
 `
 
 export const AvgTitle = styled.h3`
@@ -31,6 +41,7 @@ export const ListItem = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     &:last-child {
       margin-bottom: 0;
