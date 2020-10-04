@@ -12,6 +12,8 @@ export default {
     error: '#cf2f62',
     horizontalGradient: 'linear-gradient(to right, #c00e4f, #8b206f)',
     verticalGradient: 'linear-gradient( #a8397d, #7e2e80)',
+    cellHighlight: '#f7eef7',
+    cellFontHighlight: '#b9518a',
   },
   breakPoints: {
     lg: 1200,

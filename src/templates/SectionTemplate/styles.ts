@@ -28,10 +28,8 @@ export const Header = styled.div`
 `
 
 export const Main = styled.div`
-  ${({ theme }) => css`
-    padding: 1.5rem;
-    width: 100%;
-  `}
+  /* padding: 1.5rem; */
+  width: 100%;
 `
 
 export const Button = styled.button`

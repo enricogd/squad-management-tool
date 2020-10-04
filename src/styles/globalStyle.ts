@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 		font-family: 'Roboto', sans-serif;
 	  @media (max-width: 768px) {
 		font-size: 14px;
-	}
+		}
 	}
 
 	img {
