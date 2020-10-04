@@ -2,6 +2,7 @@ import React from 'react'
 import AverageList from 'components/AverageList'
 import TeamTable from 'components/TeamTable'
 import { Col, Grid, Row } from 'styles/grid'
+import PickedPlayers from 'components/PickedPlayers'
 
 export default function MyTeam() {
   return (
@@ -11,8 +12,12 @@ export default function MyTeam() {
           <TeamTable />
         </Col>
         <Col size={1}>
-          <AverageList />
-          <div>campo de futebol</div>
+          <div>
+            <AverageList />
+          </div>
+          <div>
+            <PickedPlayers />
+          </div>
         </Col>
       </Row>
     </Grid>
