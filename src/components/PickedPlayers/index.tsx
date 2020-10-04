@@ -6,7 +6,7 @@ export default function PickedPlayers(props: Partial<IPickedPlayers>) {
   return (
     <S.SoccerField>
       <S.LeftSide>
-        <h3>Most picked player</h3>
+        <h2>Most picked player</h2>
         <S.AvatarContainer>
           <S.PlayerAvatar>
             <span>CR</span>
@@ -18,7 +18,7 @@ export default function PickedPlayers(props: Partial<IPickedPlayers>) {
       <S.FieldCenter />
 
       <S.RightSide>
-        <h3>Less picked player</h3>
+        <h2>Less picked player</h2>
         <S.AvatarContainer>
           <S.PlayerAvatar>
             <span>ZZ</span>

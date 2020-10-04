@@ -5,18 +5,17 @@ export const SoccerField = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.verticalGradient};
     display: flex;
-    margin: 1rem;
+    margin-top: 1rem;
     border-radius: 4px;
     position: relative;
     color: white;
-    /* min-height: 20rem; */
 
-    h3 {
+    h2 {
+      font-size: ${theme.font.sizes.large};
       ${fontType('b')}
-
       ${mediaQuery('xs')(`
         font-size: ${theme.font.sizes.small}
-      `)}
+      `)};
     }
   `}
 `

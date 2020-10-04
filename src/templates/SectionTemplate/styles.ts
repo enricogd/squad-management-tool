@@ -9,7 +9,7 @@ export const Section = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 1rem;
+    /* margin: 1rem; */
   `}
 `
 

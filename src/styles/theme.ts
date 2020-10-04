@@ -14,6 +14,7 @@ export default {
     verticalGradient: 'linear-gradient( #a8397d, #7e2e80)',
     cellHighlight: '#f7eef7',
     cellFontHighlight: '#b9518a',
+    avgListBg: '#e9e3e8',
   },
   breakPoints: {
     lg: 1200,
