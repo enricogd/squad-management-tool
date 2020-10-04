@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { mediaQuery } from 'styles/helpers'
 
 export const Main = styled.main`
   ${({ theme }) => css`
@@ -10,5 +11,9 @@ export const Main = styled.main`
     right: 0;
     left: 0;
     background-color: ${theme.colors.pageBg};
+
+    ${mediaQuery('xs')(`
+      padding: 0;
+    `)}
   `}
 `
