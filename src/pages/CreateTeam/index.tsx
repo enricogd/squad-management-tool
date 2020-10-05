@@ -1,3 +1,4 @@
+import TeamConfig from 'components/TeamConfig'
 import TeamInfo from 'components/TeamInfo'
 import React from 'react'
 import { Grid, Row, Col } from 'styles/grid'
@@ -12,6 +13,7 @@ export default function CreateTeam() {
           <SectionTemplate title="Create your team">
             <S.Wrapper>
               <TeamInfo />
+              <TeamConfig />
             </S.Wrapper>
           </SectionTemplate>
         </Col>

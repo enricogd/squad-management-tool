@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 
     label {
       color: ${theme.colors.grey};
-      cursor: text;
       font-size: ${theme.font.sizes.small};
 
       ${fontType('b')};
