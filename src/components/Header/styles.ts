@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
 import venturusLogo from 'assets/images/logo_venturus-small.png'
+import styled, { css } from 'styled-components'
 import { fontType, mediaQuery } from 'styles/helpers'
 
 export const Header = styled.header`

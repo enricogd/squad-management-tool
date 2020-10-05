@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { mediaQuery } from './helpers'
 
 export const Grid = styled.div`

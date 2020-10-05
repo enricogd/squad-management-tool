@@ -1,14 +1,13 @@
-import React from 'react'
 import AverageList from 'components/AverageList'
-import TeamTable from 'components/TeamTable'
-import { Col, Grid, Row } from 'styles/grid'
 import PickedPlayers from 'components/PickedPlayers'
-import { useTypedSelector } from 'utils/hook'
+import TeamTable from 'components/TeamTable'
+import { ITeam } from 'interfaces/team'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Creators as TeamListActions } from 'store/ducks/teamsList'
 import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
-import { ITeam } from 'interfaces/team'
-import { useHistory } from 'react-router-dom'
+import { Col, Grid, Row } from 'styles/grid'
+import { useTypedSelector } from 'utils/hook'
 import { TEAM_DEFAULT } from 'utils/team'
 
 export default function MyTeam() {
@@ -18,9 +17,6 @@ export default function MyTeam() {
   ])
 
   const dispatch = useDispatch()
-
-  const history = useHistory()
-  console.log(history)
 
   // useEffect(() => {
   //   dispatch(TeamListActions.addTeam(TEAMS[0]))
@@ -48,8 +44,6 @@ export default function MyTeam() {
     createTeam,
     updateTeam,
   }
-
-  console.log({ teamsList })
 
   return (
     <Grid>

@@ -1,8 +1,7 @@
-import { createActions, createReducer } from 'reduxsauce'
-
 import { ITeam } from 'interfaces/team'
-import { randomNumber } from 'utils/number'
+import { createActions, createReducer } from 'reduxsauce'
 import { IActionsFromCreators, ITeamToEditActionCreators } from 'store/types'
+import { randomNumber } from 'utils/number'
 
 const INITIAL_STATE: ITeam = {
   id: randomNumber(),

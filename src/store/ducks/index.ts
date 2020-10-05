@@ -1,6 +1,6 @@
-import { ReducersMapObject, combineReducers, Reducer } from 'redux'
-import { IStore } from '../types'
+import { combineReducers, Reducer, ReducersMapObject } from 'redux'
 
+import { IStore } from '../types'
 import teamsList from './teamsList'
 import teamToEdit from './teamToEdit'
 

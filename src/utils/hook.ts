@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 import { IStore, SelectorEqualityFn } from 'store/types'
+
 import { pickKeys } from './object'
+
 export function useTypedSelector<K extends keyof IStore>(
   props: Array<K>,
   equalityFn: SelectorEqualityFn<K> = undefined

@@ -1,16 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import SectionTemplate from 'templates/SectionTemplate'
-import * as S from './styles'
-import { MdEdit, MdDelete, MdShare } from 'react-icons/md'
+import { MdDelete, MdEdit, MdShare } from 'react-icons/md'
 import {
-  TiArrowUnsorted,
   TiArrowSortedDown,
   TiArrowSortedUp,
+  TiArrowUnsorted,
 } from 'react-icons/ti'
-import ReactTooltip from 'react-tooltip'
-import { ISortBy, ITeamTableProps } from './types'
 import { useHistory } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 import { routesEnum } from 'routes/routesData'
+import SectionTemplate from 'templates/SectionTemplate'
+
+import * as S from './styles'
+import { ISortBy, ITeamTableProps } from './types'
 
 export default function TeamTable(props: ITeamTableProps) {
   const { teamsList, deleteTeam, createTeam, updateTeam } = props
