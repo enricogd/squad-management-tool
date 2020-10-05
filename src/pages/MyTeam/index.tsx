@@ -25,14 +25,10 @@ export default function MyTeam() {
 
   const createTeam = () => {
     dispatch(teamToEditActions.createTeam(TEAM_DEFAULT))
-
-    // history.push(routesEnum.CREATE_TEAM)
   }
 
   const updateTeam = (team: ITeam) => {
     dispatch(teamToEditActions.updateTeam(team))
-
-    // history.push(routesEnum.CREATE_TEAM)
   }
 
   const teamTableProps = {
