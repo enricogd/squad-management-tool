@@ -15,9 +15,9 @@ export const Row = styled.div`
 export const Col = styled.div`
   flex: ${(props: { size: number }) => props.size};
   flex-direction: column;
-  margin: 0 1rem;
-
-  ${mediaQuery('xs')(`
-    margin: 1rem;
-  `)}
+  margin: 1rem;
+  min-width: fit-content;
+  /* ${mediaQuery('xs')(`
+    margin:  1rem;
+  `)} */
 `
