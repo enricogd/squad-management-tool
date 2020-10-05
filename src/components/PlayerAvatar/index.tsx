@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './styles'
 import { IPlayerAvatarProps } from './types'
 import ReactTooltip from 'react-tooltip'
+import { Grid, Row, Col } from 'styles/grid'
 
 export default function PlayerAvatar(props: IPlayerAvatarProps) {
   const { player, pickedRatio, border = 'none' } = props
@@ -28,9 +29,15 @@ export default function PlayerAvatar(props: IPlayerAvatarProps) {
               <span>{`${getFirstNameInitial()}${getLastNameInitial()}`}</span>
             </S.PlayerAvatar>
             <ReactTooltip id={`${playerName}-tooltip`}>
-              {playerName}
-              {nationality}
-              {age}
+              <Grid>
+                <Row>
+                  <Col size={1}>
+                    <Row>{playerName}</Row>
+                    <Row>{nationality}</Row>
+                  </Col>
+                  <Col size={1}>{age}</Col>
+                </Row>
+              </Grid>
             </ReactTooltip>
             {pickedRatio && <p>{`${String(pickedRatio)}%`}</p>}
           </S.Border>

@@ -40,7 +40,7 @@ export const Headline = styled.div`
 
 export const SoccerField = styled.div`
   ${({ theme }) => css`
-    background: ${theme.colors.verticalGradient};
+    background: ${theme.colors.formationFieldGradient};
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
@@ -58,27 +58,14 @@ export const SoccerField = styled.div`
   `}
 `
 
-export const TopSide = styled.div`
+export const PlayerRow = styled.div`
   ${({ theme }) => css`
     align-items: center;
-    border-bottom: 1px solid ${theme.colors.lightGrey};
-    flex-grow: 1;
-    flex-shrink: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
     justify-content: center;
-    padding: 3rem 1.5rem;
-    text-align: center;
-  `}
-`
-
-export const BottomSide = styled.div`
-  ${({ theme }) => css`
-    align-items: center;
-    flex-grow: 1;
-
-    flex-shrink: 0;
-
-    justify-content: center;
-    padding: 3rem 1.5rem;
+    padding: 1.8rem;
     text-align: center;
   `}
 `
@@ -86,9 +73,22 @@ export const BottomSide = styled.div`
 export const FieldCenter = styled.div`
   ${({ theme }) => css`
     border-radius: 50%;
+    border: 2px solid ${theme.colors.lightGrey};
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `}
+`
+
+export const LineCenter = styled.div`
+  ${({ theme }) => css`
+    /* border-radius: 50%; */
     border: 1px solid ${theme.colors.lightGrey};
-    height: 4rem;
-    width: 4rem;
+    height: 1px;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;

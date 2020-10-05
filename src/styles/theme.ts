@@ -17,6 +17,7 @@ export default {
     sectionBg: '#ffffff',
     tertiary: '#9c66b4',
     verticalGradient: 'linear-gradient( #a8397d, #7e2e80)',
+    formationFieldGradient: 'linear-gradient(135deg, #AF3A7B, #742C81)',
   },
   breakPoints: {
     lg: 1200,

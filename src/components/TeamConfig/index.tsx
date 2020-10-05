@@ -12,7 +12,7 @@ export default function TeamConfig() {
       <Grid>
         <Row>
           <S.Headline>
-            <h3>TEAM CONFIGURATION</h3>
+            <h3>CONFIGURE SQUAD</h3>
           </S.Headline>
         </Row>
         <Row>
@@ -21,12 +21,27 @@ export default function TeamConfig() {
               Formation <span>3-4-3</span>
             </div>
             <S.SoccerField>
-              <S.TopSide>
+              <S.PlayerRow>
                 <PlayerAvatar player={PLAYERS[0]} />
                 <PlayerAvatar player={PLAYERS[2]} />
-              </S.TopSide>
+                <PlayerAvatar player={PLAYERS[2]} />
+              </S.PlayerRow>
               <S.FieldCenter />
-              <S.BottomSide></S.BottomSide>
+              <S.LineCenter />
+              <S.PlayerRow>
+                <PlayerAvatar player={PLAYERS[0]} />
+                <PlayerAvatar player={PLAYERS[2]} />
+                <PlayerAvatar player={PLAYERS[2]} />
+                <PlayerAvatar player={PLAYERS[2]} />
+              </S.PlayerRow>
+              <S.PlayerRow>
+                <PlayerAvatar player={PLAYERS[0]} />
+                <PlayerAvatar player={PLAYERS[2]} />
+                <PlayerAvatar player={PLAYERS[2]} />
+              </S.PlayerRow>
+              <S.PlayerRow>
+                <PlayerAvatar player={PLAYERS[0]} />
+              </S.PlayerRow>
             </S.SoccerField>
           </Col>
           <Col size={1}>
