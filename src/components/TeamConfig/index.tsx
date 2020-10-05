@@ -1,11 +1,8 @@
 import PlayerCard from 'components/PlayerCard'
-import RadioInput from 'components/RadioInput'
-import TagInput from 'components/TagInput'
-import TextArea from 'components/TextArea'
-import TextInput from 'components/TextInput'
 import { PLAYERS } from 'mocks/players'
 import React from 'react'
 import { Col, Grid, Row } from 'styles/grid'
+
 import * as S from './styles'
 
 export default function TeamConfig() {

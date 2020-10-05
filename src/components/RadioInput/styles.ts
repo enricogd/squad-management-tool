@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { fontType, transition, mediaQuery } from 'styles/helpers'
+import { fontType, mediaQuery, transition } from 'styles/helpers'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`

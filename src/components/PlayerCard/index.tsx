@@ -1,6 +1,7 @@
 import { IPlayer } from 'interfaces/player'
 import React from 'react'
-import { Grid, Row, Col } from 'styles/grid'
+import { Col, Grid, Row } from 'styles/grid'
+
 import * as S from './styles'
 
 export default function PlayerCard(props: { player: IPlayer }) {

@@ -12,7 +12,7 @@ export default function PickedPlayers(props: Partial<IPickedPlayers>) {
           <S.PlayerAvatar>
             <span>CR</span>
           </S.PlayerAvatar>
-          <p>123</p>
+          <p>75%</p>
         </S.AvatarContainer>
       </S.LeftSide>
 
@@ -24,7 +24,7 @@ export default function PickedPlayers(props: Partial<IPickedPlayers>) {
           <S.PlayerAvatar>
             <span>ZZ</span>
           </S.PlayerAvatar>
-          <p>123</p>
+          <p>10%</p>
         </S.AvatarContainer>
       </S.RightSide>
     </S.SoccerField>

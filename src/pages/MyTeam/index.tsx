@@ -11,10 +11,7 @@ import { useTypedSelector } from 'utils/hook'
 import { TEAM_DEFAULT } from 'utils/team'
 
 export default function MyTeam() {
-  const { teamsList, teamToEdit } = useTypedSelector([
-    'teamsList',
-    'teamToEdit',
-  ])
+  const { teamsList } = useTypedSelector(['teamsList'])
 
   const dispatch = useDispatch()
 

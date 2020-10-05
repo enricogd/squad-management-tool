@@ -4,6 +4,7 @@ import TextArea from 'components/TextArea'
 import TextInput from 'components/TextInput'
 import React from 'react'
 import { Col, Grid, Row } from 'styles/grid'
+
 import * as S from './styles'
 
 export default function TeamInfo() {

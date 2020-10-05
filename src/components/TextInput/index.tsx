@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { IInputPrimaryProps } from './types'
 import * as S from './styles'
+import { IInputPrimaryProps } from './types'
 
 export default function TextInput({
   label,

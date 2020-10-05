@@ -9,7 +9,6 @@ export const Footer = styled.footer`
     display: flex;
     flex-direction: column;
     font-size: ${theme.font.sizes.small};
-    font-weight: 400;
     height: 40px;
     justify-content: center;
     left: 0;
