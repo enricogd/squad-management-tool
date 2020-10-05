@@ -37,3 +37,61 @@ export const Headline = styled.div`
     }
   `}
 `
+
+export const SoccerField = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.verticalGradient};
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-radius: 4px;
+    position: relative;
+    color: white;
+
+    h2 {
+      font-size: ${theme.font.sizes.large};
+      ${fontType('b')}
+      ${mediaQuery('xs')(`
+        font-size: ${theme.font.sizes.small}
+      `)};
+    }
+  `}
+`
+
+export const TopSide = styled.div`
+  ${({ theme }) => css`
+    align-items: center;
+    border-bottom: 1px solid ${theme.colors.lightGrey};
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  `}
+`
+
+export const BottomSide = styled.div`
+  ${({ theme }) => css`
+    align-items: center;
+    flex-grow: 1;
+
+    flex-shrink: 0;
+
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  `}
+`
+
+export const FieldCenter = styled.div`
+  ${({ theme }) => css`
+    border-radius: 50%;
+    border: 1px solid ${theme.colors.lightGrey};
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `}
+`
