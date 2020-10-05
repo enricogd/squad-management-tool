@@ -8,6 +8,7 @@ const persistConfig = {
   key: 'Squad Management Tool',
   storage,
   whitelist: ['teamsList'],
+  // whitelist: [''],
 }
 
 const persistedReducer: Reducer = persistReducer(persistConfig, Reducers)

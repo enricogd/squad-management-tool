@@ -16,6 +16,7 @@ export interface IApiTeamsResponse {
 }
 
 export interface ITeam {
+  id: number
   description: string
   name: string
   players: IPlayer[] | []

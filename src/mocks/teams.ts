@@ -1,9 +1,11 @@
 import { ITeam } from 'interfaces/team'
+import { randomNumber } from 'utils/number'
 
 import { PLAYERS } from './players'
 
 export const TEAMS: ITeam[] = [
   {
+    id: randomNumber(),
     name: 'Barcelona',
     description: 'Barcelona Squad',
     website: 'https://www.fcbarcelona.com/en/',
@@ -13,6 +15,7 @@ export const TEAMS: ITeam[] = [
     formation: [1, 2, 3],
   },
   {
+    id: randomNumber(),
     name: 'Not Real Madrid',
     description: '',
     website: 'https://www.realmadrid.com/en',

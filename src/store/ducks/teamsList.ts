@@ -1,17 +1,19 @@
 import { ITeam } from 'interfaces/team'
+import { TEAMS } from 'mocks/teams'
 import { createActions, createReducer } from 'reduxsauce'
+import { IActionsFromCreators, ITeamListActionCreators } from 'store/types'
 
 const INITIAL_STATE: ITeam[] = []
 
-const add = (state = INITIAL_STATE, action: { team: ITeam }) => {
+const add = (state = TEAMS, action: { team: ITeam }) => {
   return [...state, action.team]
 }
 
-const update = (state = INITIAL_STATE, action: { team: ITeam }) =>
-  state.map((t) => (t.name === action.team.name ? action.team : t))
+const update = (state = TEAMS, action: { team: ITeam }) =>
+  state.map((t) => (t.id === action.team.id ? action.team : t))
 
-const remove = (state = INITIAL_STATE, action: { team: ITeam }) =>
-  state.filter((t) => !(t.name === action.team.name))
+const remove = (state = TEAMS, action: { team: ITeam }) =>
+  state.filter((t) => !(t.id === action.team.id))
 
 const actions = {
   addTeam: ['team'],
@@ -19,7 +21,10 @@ const actions = {
   removeTeam: ['team'],
 }
 
-export const { Types, Creators } = createActions(actions)
+export const {
+  Types,
+  Creators,
+}: IActionsFromCreators<ITeamListActionCreators> = createActions(actions)
 
 const handlers = {
   [Types.ADD_TEAM]: add,
