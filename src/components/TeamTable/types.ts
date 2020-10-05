@@ -6,6 +6,8 @@ export interface ISortBy {
 }
 
 export interface ITeamTableProps {
-  teamList: ITeam[]
+  teamsList: ITeam[]
   deleteTeam: (team: ITeam) => void
+  createTeam: () => void
+  updateTeam: (team: ITeam) => void
 }

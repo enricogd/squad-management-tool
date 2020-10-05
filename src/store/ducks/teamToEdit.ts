@@ -2,6 +2,7 @@ import { createActions, createReducer } from 'reduxsauce'
 
 import { ITeam } from 'interfaces/team'
 import { randomNumber } from 'utils/number'
+import { IActionsFromCreators, ITeamToEditActionCreators } from 'store/types'
 
 const INITIAL_STATE: ITeam = {
   id: randomNumber(),
@@ -14,23 +15,26 @@ const INITIAL_STATE: ITeam = {
   formation: [3, 4, 3],
 }
 
-const set = (state = INITIAL_STATE, action: { team: ITeam }): ITeam =>
-  action.team
+const create = (state = INITIAL_STATE, action: { team: ITeam }): ITeam => {
+  return action.team
+}
 
-const update = (state = INITIAL_STATE, action: { team: ITeam }): ITeam => ({
-  ...state,
-  ...action.team,
-})
+const update = (state = INITIAL_STATE, action: { team: ITeam }): ITeam => {
+  return { ...state, ...action.team }
+}
 
 const actions = {
-  setTeam: ['team'],
+  createTeam: ['team'],
   updateTeam: ['team'],
 }
 
-export const { Types, Creators } = createActions(actions)
+export const {
+  Types,
+  Creators,
+}: IActionsFromCreators<ITeamToEditActionCreators> = createActions(actions)
 
 const handlers = {
-  [Types.SET_TEAM]: set,
+  [Types.CREATE_TEAM]: create,
   [Types.UPDATE_TEAM]: update,
 }
 

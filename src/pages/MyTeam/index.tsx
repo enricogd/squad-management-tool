@@ -6,12 +6,21 @@ import PickedPlayers from 'components/PickedPlayers'
 import { useTypedSelector } from 'utils/hook'
 import { useDispatch } from 'react-redux'
 import { Creators as TeamListActions } from 'store/ducks/teamsList'
+import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
 import { ITeam } from 'interfaces/team'
+import { useHistory } from 'react-router-dom'
+import { TEAM_DEFAULT } from 'utils/team'
 
 export default function MyTeam() {
-  const { teamsList } = useTypedSelector(['teamsList'])
+  const { teamsList, teamToEdit } = useTypedSelector([
+    'teamsList',
+    'teamToEdit',
+  ])
 
   const dispatch = useDispatch()
+
+  const history = useHistory()
+  console.log(history)
 
   // useEffect(() => {
   //   dispatch(TeamListActions.addTeam(TEAMS[0]))
@@ -21,13 +30,32 @@ export default function MyTeam() {
     dispatch(TeamListActions.removeTeam(team))
   }
 
+  const createTeam = () => {
+    dispatch(teamToEditActions.createTeam(TEAM_DEFAULT))
+
+    // history.push(routesEnum.CREATE_TEAM)
+  }
+
+  const updateTeam = (team: ITeam) => {
+    dispatch(teamToEditActions.updateTeam(team))
+
+    // history.push(routesEnum.CREATE_TEAM)
+  }
+
+  const teamTableProps = {
+    teamsList,
+    deleteTeam,
+    createTeam,
+    updateTeam,
+  }
+
   console.log({ teamsList })
 
   return (
     <Grid>
       <Row>
         <Col size={1}>
-          <TeamTable teamList={teamsList} deleteTeam={deleteTeam} />
+          <TeamTable {...teamTableProps} />
         </Col>
         <Col size={1}>
           <div>

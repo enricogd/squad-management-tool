@@ -20,3 +20,8 @@ export interface ITeamListActionCreators {
   updateTeam: (team: ITeam) => void
   removeTeam: (team: ITeam) => void
 }
+
+export interface ITeamToEditActionCreators {
+  createTeam: (team: ITeam) => void
+  updateTeam: (team: ITeam) => void
+}

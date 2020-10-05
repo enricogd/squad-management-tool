@@ -13,9 +13,9 @@ import { useHistory } from 'react-router-dom'
 import { routesEnum } from 'routes/routesData'
 
 export default function TeamTable(props: ITeamTableProps) {
-  const { teamList, deleteTeam } = props
+  const { teamsList, deleteTeam, createTeam, updateTeam } = props
 
-  const [list, setList] = useState(teamList)
+  const [list, setList] = useState(teamsList)
   const [sortBy, setSortBy] = useState<ISortBy>({
     header: 'default',
     order: 'asc',
@@ -62,10 +62,17 @@ export default function TeamTable(props: ITeamTableProps) {
     return <TiArrowUnsorted />
   }
 
-  useEffect(() => setList(teamList), [teamList])
+  useEffect(() => setList(teamsList), [teamsList])
+
+  const changePage = () => history.push(routesEnum.CREATE_TEAM)
 
   return (
-    <SectionTemplate title="My Teams" onClick={() => {}}>
+    <SectionTemplate
+      title="My Teams"
+      onClick={() => {
+        createTeam()
+        changePage()
+      }}>
       <S.Wrapper>
         <S.Table>
           <thead>
@@ -114,7 +121,8 @@ export default function TeamTable(props: ITeamTableProps) {
                       data-tip
                       data-for="edit"
                       onClick={() => {
-                        history.push(routesEnum.CREATE_TEAM)
+                        updateTeam(team)
+                        changePage()
                       }}
                     />
                     <ReactTooltip effect="solid" id="edit">
