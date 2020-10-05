@@ -1,5 +1,4 @@
-import { TEAMS } from 'mocks/teams'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import SectionTemplate from 'templates/SectionTemplate'
 import * as S from './styles'
 import { MdEdit, MdDelete, MdShare } from 'react-icons/md'
@@ -9,12 +8,14 @@ import {
   TiArrowSortedUp,
 } from 'react-icons/ti'
 import ReactTooltip from 'react-tooltip'
-import { ISortBy } from './types'
+import { ISortBy, ITeamTableProps } from './types'
 import { useHistory } from 'react-router-dom'
 import { routesEnum } from 'routes/routesData'
 
-export default function TeamTable() {
-  const [list, setList] = useState(TEAMS)
+export default function TeamTable(props: ITeamTableProps) {
+  const { teamList, deleteTeam } = props
+
+  const [list, setList] = useState(teamList)
   const [sortBy, setSortBy] = useState<ISortBy>({
     header: 'default',
     order: 'asc',
@@ -61,6 +62,8 @@ export default function TeamTable() {
     return <TiArrowUnsorted />
   }
 
+  useEffect(() => setList(teamList), [teamList])
+
   return (
     <SectionTemplate title="My Teams" onClick={() => {}}>
       <S.Wrapper>
@@ -83,7 +86,7 @@ export default function TeamTable() {
           </thead>
           <tbody>
             {list.map((team) => (
-              <tr>
+              <tr key={team.id}>
                 <td>{team.name}</td>
                 <td>
                   <p>{team.description}</p>
@@ -91,7 +94,8 @@ export default function TeamTable() {
                     <MdDelete
                       data-tip
                       data-for="delete"
-                      onClick={() => setList(list.filter((x) => !(x === team)))}
+                      // onClick={() => setList(list.filter((x) => !(x === team)))}
+                      onClick={() => deleteTeam(team)}
                     />
                     <ReactTooltip effect="solid" id="delete">
                       Delete
