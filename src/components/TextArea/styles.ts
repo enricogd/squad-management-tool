@@ -35,7 +35,6 @@ export const Wrapper = styled.div`
         color: ${theme.colors.lightGrey};
       }
 
-      &:focus,
       &:valid {
         border: solid 1px ${theme.colors.error};
 

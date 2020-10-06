@@ -47,13 +47,6 @@ export const Button = styled.button`
 
     ${transition(0.1)}
 
-    /* &:hover {
-      box-shadow: inset -2px -2px 8px rgba(135, 53, 131, 1),
-        inset -2px -2px 12px rgba(135, 53, 131, 0.5),
-        inset 2px 2px 4px rgba(135, 53, 131, 0.1),
-        inset 2px 2px 8px rgba(0, 0, 0, 0.15);
-    } */
-
     &:active {
       position: relative;
       top: 0.5px;

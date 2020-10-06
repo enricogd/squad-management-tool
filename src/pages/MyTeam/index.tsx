@@ -2,8 +2,7 @@ import AverageList from 'components/AverageList'
 import PickedPlayers from 'components/PickedPlayers'
 import TeamTable from 'components/TeamTable'
 import { ITeam } from 'interfaces/team'
-import { TEAMS } from 'mocks/teams'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Creators as TeamListActions } from 'store/ducks/teamsList'
 import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
@@ -15,10 +14,6 @@ export default function MyTeam() {
   const { teamsList } = useTypedSelector(['teamsList'])
 
   const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(TeamListActions.addTeam(TEAMS[0]))
-  // }, [])
 
   const deleteTeam = (team: ITeam) => {
     dispatch(TeamListActions.removeTeam(team))

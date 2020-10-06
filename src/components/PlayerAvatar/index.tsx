@@ -35,7 +35,7 @@ export default function PlayerAvatar(props: IPlayerAvatarProps) {
   return (
     <>
       <S.AvatarContainer onClick={() => onClick(position)}>
-        {player?.player_name ? (
+        {player && player?.player_name ? (
           <S.Border borderStyle={border}>
             <S.PlayerAvatar
               data-tip

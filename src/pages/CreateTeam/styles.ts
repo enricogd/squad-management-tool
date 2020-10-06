@@ -102,3 +102,29 @@ export const LineCenter = styled.div`
     transform: translate(-50%, -50%);
   `}
 `
+
+export const Button = styled.button`
+  ${({ theme }) => css`
+    align-items: center;
+    background: ${theme.colors.verticalGradient};
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 3px 6px ${theme.colors.tertiary};
+    color: white;
+    font-size: 2rem;
+    height: auto;
+    font-size: ${theme.font.sizes.medium};
+    padding: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    ${transition(0.1)}
+
+    &:active {
+      position: relative;
+      top: 0.5px;
+      box-shadow: none;
+    }
+  `}
+`

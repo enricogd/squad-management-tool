@@ -19,7 +19,7 @@ export interface ITeam {
   id: number
   description: string
   name: string
-  players: IPlayer[] | []
+  players: (IPlayer | '')[]
   tags: string[] | []
   type: 'real' | 'fantasy'
   website: string

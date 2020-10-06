@@ -16,6 +16,7 @@ import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
 
 import * as S from './styles'
 import { IPlayer } from 'interfaces/player'
+import { routesEnum } from 'routes/routesData'
 
 export default function CreateTeam() {
   const dispatch = useDispatch()
@@ -24,6 +25,8 @@ export default function CreateTeam() {
   const { teamToEdit } = useTypedSelector(['teamToEdit'])
 
   const [team, setTeam] = useState(teamToEdit)
+  const [isTeamValid, setIsTeamValid] = useState(false)
+  console.log({ team, isTeamValid })
 
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
 
@@ -61,7 +64,7 @@ export default function CreateTeam() {
     const result = formationOrder.map((row, rowIdx) => {
       return (
         <S.PlayerRow key={rowIdx}>
-          {row.map((player: IPlayer | undefined, playerIdx) => (
+          {row.map((player: IPlayer, playerIdx) => (
             <PlayerAvatar
               player={player}
               key={playerIdx}
@@ -77,8 +80,32 @@ export default function CreateTeam() {
       )
     })
     console.log({ result })
-
     return result
+  }
+
+  const teamValidation = () => {
+    const teamNameIsValid =
+      team.name.length > 4 && team.name.search(/\d/) === -1
+
+    const teamWebsiteIsValid =
+      team.website.search(
+        /(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/
+      ) !== -1
+
+    const haveElevenPlayer = team.players.every((x) => x !== '')
+
+    console.log({ teamNameIsValid, teamWebsiteIsValid, haveElevenPlayer })
+
+    const isAllValid = teamNameIsValid && teamWebsiteIsValid && haveElevenPlayer
+
+    return isAllValid
+  }
+
+  const createNewTeam = () => {
+    // if (!isTeamValid) return
+    teamValidation()
+    dispatch(teamToEditActions.createTeam(team))
+    history.push(routesEnum.MY_TEAM)
   }
 
   useEffect(() => {
@@ -103,6 +130,8 @@ export default function CreateTeam() {
                     label="Team name"
                     onChange={updateTeam('name')}
                     placeholder="Insert team name"
+                    type="text"
+                    maxLength={30}
                     value={name}
                   />
                   <TextArea
@@ -110,7 +139,9 @@ export default function CreateTeam() {
                     label="Description"
                     onChange={updateTeam('description')}
                     placeholder="Insert team description"
+                    type="text"
                     value={description}
+                    maxLength={200}
                   />
                 </Col>
                 <Col size={1}>
@@ -119,7 +150,9 @@ export default function CreateTeam() {
                     label="Team website"
                     onChange={updateTeam('website')}
                     placeholder="Insert team website"
+                    type="url"
                     value={website}
+                    maxLength={100}
                   />
                   <S.Label>Team type</S.Label>
                   <Row>
@@ -159,7 +192,7 @@ export default function CreateTeam() {
                     Formation <span>3-4-3</span>
                   </div>
                   <S.SoccerField>
-                    {handleFormation([5, 4, 1], team.players)}
+                    {handleFormation([3, 4, 3], team.players)}
                     <S.PlayerRow>
                       <PlayerAvatar
                         key={10}
@@ -171,6 +204,7 @@ export default function CreateTeam() {
                     <S.FieldCenter />
                     <S.LineCenter />
                   </S.SoccerField>
+                  <S.Button onClick={createNewTeam}>Save</S.Button>
                 </Col>
                 <Col size={1}>
                   {PLAYERS.map((player, idx) => (
