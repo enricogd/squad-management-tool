@@ -22,13 +22,10 @@ export default function CreateTeam() {
   const history = useHistory()
 
   const { teamToEdit } = useTypedSelector(['teamToEdit'])
-  console.log({ teamToEdit })
 
   const [team, setTeam] = useState(teamToEdit)
-  console.log(team.players)
 
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
-  console.log({ selectedPlayer })
 
   const { name, description, tags, website, type } = team
 
@@ -40,19 +37,17 @@ export default function CreateTeam() {
   }
 
   const setPlayerInPosition = (idx: number) => {
-    console.log({ idx })
-
     if (!selectedPlayer) return
 
     let position = [...team.players]
 
     position[idx] = selectedPlayer
-    console.log({ position })
 
     setTeam({ ...team, players: position })
     setSelectedPlayer(undefined)
   }
 
+  // TODO: refine this numerology-like algorithm
   const handleFormation = (formation: number[], playersArray: any[]) => {
     const mutableArr = [...playersArray]
 
