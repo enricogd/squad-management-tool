@@ -7,7 +7,7 @@ import { Reducers } from './ducks'
 const persistConfig = {
   key: 'Squad Management Tool',
   storage,
-  whitelist: ['teamsList'],
+  whitelist: ['teamsList', 'teamToEdit'],
   // whitelist: [''],
 }
 

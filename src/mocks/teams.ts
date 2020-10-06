@@ -11,8 +11,8 @@ export const TEAMS: ITeam[] = [
     website: 'https://www.fcbarcelona.com/en/',
     type: 'real',
     tags: ['euro', 'champions', 'spanish'],
-    players: [PLAYERS[0], PLAYERS[1]],
-    formation: [1, 2, 3],
+    players: new Array(11).fill(undefined).map((x, idx) => PLAYERS[idx]),
+    formation: [3, 4, 3],
   },
   {
     id: randomNumber(),
@@ -20,8 +20,8 @@ export const TEAMS: ITeam[] = [
     description: '',
     website: 'https://www.realmadrid.com/en',
     type: 'fantasy',
-    tags: ['euro', 'atk', 'best'],
-    players: [PLAYERS[2], PLAYERS[3]],
-    formation: [3, 2, 1],
+    tags: [],
+    players: new Array(11).fill(undefined).map((x, idx) => PLAYERS[idx]),
+    formation: [3, 4, 3],
   },
 ]
