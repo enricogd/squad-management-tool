@@ -47,7 +47,7 @@ export default function CreateTeam() {
     setSelectedPlayer(undefined)
   }
 
-  // TODO: refine this numerology-like algorithm
+  // TODO: can't handle formations with more than 3 rows
   const handleFormation = (formation: number[], playersArray: any[]) => {
     const mutableArr = [...playersArray]
 
@@ -66,12 +66,17 @@ export default function CreateTeam() {
               player={player}
               key={playerIdx}
               onClick={setPlayerInPosition}
-              position={rowIdx ? array[rowIdx] + array[rowIdx - 1] : playerIdx}
+              position={
+                rowIdx
+                  ? array[rowIdx] + array[rowIdx - 1] + playerIdx
+                  : playerIdx
+              }
             />
           ))}
         </S.PlayerRow>
       )
     })
+    console.log({ result })
 
     return result
   }
@@ -154,65 +159,7 @@ export default function CreateTeam() {
                     Formation <span>3-4-3</span>
                   </div>
                   <S.SoccerField>
-                    {/* {handleFormation([3, 4, 3], teamToEdit.players)} */}
-                    <S.PlayerRow>
-                      <PlayerAvatar
-                        player={team.players[0]}
-                        position={0}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[1]}
-                        position={1}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[2]}
-                        position={2}
-                        onClick={setPlayerInPosition}
-                      />
-                    </S.PlayerRow>
-                    <S.FieldCenter />
-                    <S.LineCenter />
-                    <S.PlayerRow>
-                      <PlayerAvatar
-                        player={team.players[3]}
-                        position={3}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[4]}
-                        position={4}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[5]}
-                        position={5}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[6]}
-                        position={6}
-                        onClick={setPlayerInPosition}
-                      />
-                    </S.PlayerRow>
-                    <S.PlayerRow>
-                      <PlayerAvatar
-                        player={team.players[7]}
-                        position={7}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[8]}
-                        position={8}
-                        onClick={setPlayerInPosition}
-                      />
-                      <PlayerAvatar
-                        player={team.players[9]}
-                        position={9}
-                        onClick={setPlayerInPosition}
-                      />
-                    </S.PlayerRow>
+                    {handleFormation([5, 4, 1], team.players)}
                     <S.PlayerRow>
                       <PlayerAvatar
                         key={10}
