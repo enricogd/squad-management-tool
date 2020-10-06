@@ -13,6 +13,7 @@ import { Col, Grid, Row } from 'styles/grid'
 import SectionTemplate from 'templates/SectionTemplate'
 import { useTypedSelector } from 'utils/hook'
 import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
+import { Creators as teamListActions } from 'store/ducks/teamsList'
 
 import * as S from './styles'
 import { IPlayer } from 'interfaces/player'
@@ -22,11 +23,14 @@ export default function CreateTeam() {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const { teamToEdit } = useTypedSelector(['teamToEdit'])
+  const { teamToEdit, teamsList } = useTypedSelector([
+    'teamToEdit',
+    'teamsList',
+  ])
 
   const [team, setTeam] = useState(teamToEdit)
   const [isTeamValid, setIsTeamValid] = useState(false)
-  console.log({ team, isTeamValid })
+  console.log({ team, isTeamValid, teamToEdit })
 
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
 
@@ -47,10 +51,39 @@ export default function CreateTeam() {
     position[idx] = selectedPlayer
 
     setTeam({ ...team, players: position })
-    setSelectedPlayer(undefined)
+    // setSelectedPlayer(undefined)
   }
 
   // TODO: can't handle formations with more than 3 rows
+
+  const teamValidation = () => {
+    const teamNameIsValid = team.name.length > 4
+
+    const teamWebsiteIsValid =
+      team.website.search(
+        /(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/
+      ) !== -1
+
+    const haveElevenPlayer = team.players.every((x) => x !== '')
+
+    console.log({ teamNameIsValid, teamWebsiteIsValid, haveElevenPlayer })
+
+    const isAllValid = teamNameIsValid && teamWebsiteIsValid && haveElevenPlayer
+
+    return isAllValid
+  }
+
+  const createOrUpdateTeam = () => {
+    if (!teamValidation()) return
+
+    const updateOrCreate = teamsList.some((x) => x.id === team.id)
+      ? 'updateTeam'
+      : 'addTeam'
+
+    dispatch(teamListActions[updateOrCreate](team))
+    history.push(routesEnum.MY_TEAM)
+  }
+
   const handleFormation = (formation: number[], playersArray: any[]) => {
     const mutableArr = [...playersArray]
 
@@ -79,33 +112,7 @@ export default function CreateTeam() {
         </S.PlayerRow>
       )
     })
-    console.log({ result })
     return result
-  }
-
-  const teamValidation = () => {
-    const teamNameIsValid =
-      team.name.length > 4 && team.name.search(/\d/) === -1
-
-    const teamWebsiteIsValid =
-      team.website.search(
-        /(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/
-      ) !== -1
-
-    const haveElevenPlayer = team.players.every((x) => x !== '')
-
-    console.log({ teamNameIsValid, teamWebsiteIsValid, haveElevenPlayer })
-
-    const isAllValid = teamNameIsValid && teamWebsiteIsValid && haveElevenPlayer
-
-    return isAllValid
-  }
-
-  const createNewTeam = () => {
-    // if (!isTeamValid) return
-    teamValidation()
-    dispatch(teamToEditActions.createTeam(team))
-    history.push(routesEnum.MY_TEAM)
   }
 
   useEffect(() => {
@@ -204,7 +211,7 @@ export default function CreateTeam() {
                     <S.FieldCenter />
                     <S.LineCenter />
                   </S.SoccerField>
-                  <S.Button onClick={createNewTeam}>Save</S.Button>
+                  <S.Button onClick={createOrUpdateTeam}>Save</S.Button>
                 </Col>
                 <Col size={1}>
                   {PLAYERS.map((player, idx) => (

@@ -35,14 +35,6 @@ export const Wrapper = styled.div`
         color: ${theme.colors.lightGrey};
       }
 
-      &:valid {
-        border: solid 1px ${theme.colors.error};
-
-        + label {
-          color: ${theme.colors.error};
-        }
-      }
-
       &[disabled] {
         border: dashed 1px ${theme.colors.error};
 

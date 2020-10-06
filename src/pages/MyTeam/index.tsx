@@ -8,10 +8,12 @@ import { Creators as TeamListActions } from 'store/ducks/teamsList'
 import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
 import { Col, Grid, Row } from 'styles/grid'
 import { useTypedSelector } from 'utils/hook'
+import { randomNumber } from 'utils/number'
 import { TEAM_DEFAULT } from 'utils/team'
 
 export default function MyTeam() {
   const { teamsList } = useTypedSelector(['teamsList'])
+  console.log({ teamsList })
 
   const dispatch = useDispatch()
 
@@ -20,7 +22,7 @@ export default function MyTeam() {
   }
 
   const createTeam = () => {
-    dispatch(teamToEditActions.createTeam(TEAM_DEFAULT))
+    dispatch(teamToEditActions.createTeam(TEAM_DEFAULT(randomNumber())))
   }
 
   const updateTeam = (team: ITeam) => {
