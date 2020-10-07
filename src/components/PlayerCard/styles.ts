@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components'
 import { fontType } from 'styles/helpers'
 
+type Prop = { selected: boolean }
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.greyVerticalGradient};
-    border: 2px dashed ${theme.colors.lightGrey};
-    margin-bottom: 0.5rem;
+    border: 1px solid
+      ${(props: Prop) => (props.selected ? theme.colors.error : '#fff')};
+    margin-bottom: 0.8rem;
   `}
 `
 

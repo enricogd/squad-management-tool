@@ -4,14 +4,15 @@ import { Col, Grid, Row } from 'styles/grid'
 
 import * as S from './styles'
 
-export default function PlayerCard(props: { player: IPlayer }) {
-  const { player } = props
-
-  //   const fullName = `${player.firstname}${player.lastname}`
+export default function PlayerCard(props: {
+  player: IPlayer
+  selected: boolean
+}) {
+  const { player, selected } = props
 
   return (
     <>
-      <S.Wrapper>
+      <S.Wrapper selected={selected}>
         <Grid>
           <Row>
             <Col size={3}>

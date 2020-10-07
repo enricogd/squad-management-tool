@@ -12,7 +12,6 @@ import { useHistory } from 'react-router-dom'
 import { Col, Grid, Row } from 'styles/grid'
 import SectionTemplate from 'templates/SectionTemplate'
 import { useTypedSelector } from 'utils/hook'
-import { Creators as teamToEditActions } from 'store/ducks/teamToEdit'
 import { Creators as teamListActions } from 'store/ducks/teamsList'
 
 import * as S from './styles'
@@ -27,11 +26,7 @@ export default function CreateTeam() {
     'teamToEdit',
     'teamsList',
   ])
-
   const [team, setTeam] = useState(teamToEdit)
-  const [isTeamValid, setIsTeamValid] = useState(false)
-  console.log({ team, isTeamValid, teamToEdit })
-
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
 
   const { name, description, tags, website, type } = team
@@ -51,10 +46,9 @@ export default function CreateTeam() {
     position[idx] = selectedPlayer
 
     setTeam({ ...team, players: position })
+    // TODO: uncomment this
     // setSelectedPlayer(undefined)
   }
-
-  // TODO: can't handle formations with more than 3 rows
 
   const teamValidation = () => {
     const teamNameIsValid = team.name.length > 4
@@ -66,7 +60,7 @@ export default function CreateTeam() {
 
     const haveElevenPlayer = team.players.every((x) => x !== '')
 
-    console.log({ teamNameIsValid, teamWebsiteIsValid, haveElevenPlayer })
+    // console.log({ teamNameIsValid, teamWebsiteIsValid, haveElevenPlayer })
 
     const isAllValid = teamNameIsValid && teamWebsiteIsValid && haveElevenPlayer
 
@@ -84,6 +78,7 @@ export default function CreateTeam() {
     history.push(routesEnum.MY_TEAM)
   }
 
+  // TODO: can't handle formations with more than 3 rows
   const handleFormation = (formation: number[], playersArray: any[]) => {
     const mutableArr = [...playersArray]
 
@@ -216,7 +211,13 @@ export default function CreateTeam() {
                 <Col size={1}>
                   {PLAYERS.map((player, idx) => (
                     <span onClick={() => setSelectedPlayer(player)} key={idx}>
-                      <PlayerCard key={player.player_id} player={player} />
+                      <PlayerCard
+                        key={player.player_id}
+                        player={player}
+                        selected={
+                          selectedPlayer?.player_id === player.player_id
+                        }
+                      />
                     </span>
                   ))}
                 </Col>

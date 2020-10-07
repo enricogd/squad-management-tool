@@ -16,6 +16,8 @@ export const Border = styled.div`
         return `border: 2px dashed ${theme.colors.avatarBorderHighlight}`
       } else if (props.borderStyle === 'placeholder') {
         return `border: 2px dashed ${theme.colors.grey}`
+      } else {
+        return `border: 2px dashed transparent`
       }
     }};
     border-radius: 50%;
@@ -27,14 +29,13 @@ export const PlayerAvatar = styled.div`
   ${({ theme }) => css`
     background: white;
     border-radius: 50%;
-    z-index: 100;
-
     color: ${theme.colors.darkGrey};
     font-weight: 500;
     height: 4rem;
     position: relative;
     text-align: center;
     width: 4rem;
+    z-index: 100;
 
     ${mediaQuery('xs')(`
         height: 2.5rem;
@@ -60,14 +61,13 @@ export const Placeholder = styled.div`
   ${({ theme }) => css`
     background-color: #ffffff77;
     border-radius: 50%;
-    z-index: 100;
-
     color: ${theme.colors.darkGrey};
     font-weight: 500;
     height: 4rem;
     position: relative;
     text-align: center;
     width: 4rem;
+    z-index: 100;
 
     ${mediaQuery('xs')(`
         height: 2.5rem;
