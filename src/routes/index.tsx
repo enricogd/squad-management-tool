@@ -4,7 +4,7 @@ import React from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import PageTemplate from 'templates/PageTemplate'
 
-import { routesData, routesEnum } from './routesData'
+import { routesEnum } from './routesData'
 
 export default function Routes() {
   return (

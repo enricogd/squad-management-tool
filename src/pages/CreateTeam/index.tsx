@@ -55,7 +55,7 @@ export default function CreateTeam() {
 
     const teamWebsiteIsValid =
       team.website.search(
-        /(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/
+        /(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/
       ) !== -1
 
     const haveElevenPlayer = team.players.every((x) => x !== '')
