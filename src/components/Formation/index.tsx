@@ -2,10 +2,27 @@ import PlayerAvatar from 'components/PlayerAvatar'
 import { IPlayer } from 'interfaces/player'
 import React from 'react'
 import * as S from './styles'
-import { IFormationProps } from './types'
+import { IFormationProps, ISelectOption } from './types'
+import Select from 'react-select'
+
+const VALID_FORMATIONS = [
+  [3, 4, 3],
+  [3, 5, 2],
+  [4, 3, 2],
+  [4, 4, 2],
+  [4, 5, 1],
+  [5, 4, 1],
+]
 
 export default function Formation(props: IFormationProps) {
-  const { team, setPlayerInPosition, onSave } = props
+  const { team, setPlayerInPosition, onSave, formation, setFormation } = props
+
+  const getFormationOption = (value: number[]): ISelectOption => ({
+    value,
+    label: value.join(' - '),
+  })
+  const formationOptions = VALID_FORMATIONS.map(getFormationOption)
+  console.log(formationOptions)
 
   // TODO: can't handle formations with more than 3 rows
   const handleFormation = (formation: number[], playersArray: any[]) => {
@@ -18,6 +35,7 @@ export default function Formation(props: IFormationProps) {
       mutableArr.splice(0, row)
       return players
     })
+
     const result = formationOrder.map((row, rowIdx) => {
       return (
         <S.PlayerRow key={rowIdx}>
@@ -38,13 +56,26 @@ export default function Formation(props: IFormationProps) {
     })
     return result
   }
+
+  const handleSelectChange = (opt: ISelectOption) => {
+    setFormation(opt.value)
+  }
+
   return (
     <>
-      <div>
-        Formation <span>3-4-3</span>
-      </div>
+      <S.SelectWrapper>
+        <span>Formation</span>
+        <Select
+          //@ts-ignore
+          onChange={handleSelectChange}
+          options={formationOptions}
+          styles={S.SelectCustomStyles}
+          value={getFormationOption(formation)}
+          width={'5rem'}
+        />
+      </S.SelectWrapper>
       <S.SoccerField>
-        {handleFormation([3, 4, 3], team.players)}
+        {handleFormation(formation, team.players)}
         <S.PlayerRow>
           <PlayerAvatar
             key={10}

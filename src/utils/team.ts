@@ -1,12 +1,12 @@
 import { ITeam } from 'interfaces/team'
 
-const playersArray = new Array(11).fill('')
+export const DEFAULT_PLAYERS_ARRAY = new Array(11).fill('')
 
 export const TEAM_DEFAULT = (number: number): ITeam => ({
   id: number,
   description: '',
   name: '',
-  players: playersArray,
+  players: DEFAULT_PLAYERS_ARRAY,
   tags: [],
   type: 'fantasy',
   website: '',

@@ -87,3 +87,26 @@ export const Button = styled.button`
     }
   `}
 `
+
+export const SelectCustomStyles = {
+  container: (provided: any, state: any) => ({
+    ...provided,
+    width: '10rem',
+    // borderBottom: '1px dotted pink',
+    // color: state.selectProps.menuColor,
+    // padding: 20,
+  }),
+}
+
+export const SelectWrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    span {
+      ${fontType('b')}
+      font-size: ${theme.font.sizes.small};
+      margin-right: 1rem;
+    }
+  `}
+`
