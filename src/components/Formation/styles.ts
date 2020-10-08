@@ -92,6 +92,7 @@ export const SelectCustomStyles = {
   container: (provided: any, state: any) => ({
     ...provided,
     width: '10rem',
+    'z-index': 1000,
   }),
 }
 

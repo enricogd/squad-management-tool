@@ -5,7 +5,7 @@ export const AvatarContainer = styled.div`
   margin: 0.5rem;
   display: flex;
   justify-content: center;
-  /* z-index: 10; */
+  z-index: 50;
 
   ${mediaQuery('xs')(`
         margin: 0;
@@ -40,7 +40,7 @@ export const PlayerAvatar = styled.div`
     position: relative;
     text-align: center;
     width: 4rem;
-    /* z-index: 100; */
+    z-index: 50;
 
     ${mediaQuery('xs')(`
         height: 2rem;
@@ -72,7 +72,7 @@ export const Placeholder = styled.div`
     position: relative;
     text-align: center;
     width: 4rem;
-    /* z-index: 100; */
+    z-index: 50;
 
     ${mediaQuery('xs')(`
         height: 2rem;
