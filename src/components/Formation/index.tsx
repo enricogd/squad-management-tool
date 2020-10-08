@@ -71,7 +71,6 @@ export default function Formation(props: IFormationProps) {
           options={formationOptions}
           styles={S.SelectCustomStyles}
           value={getFormationOption(formation)}
-          width={'5rem'}
         />
       </S.SelectWrapper>
       <S.SoccerField>

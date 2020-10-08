@@ -92,9 +92,6 @@ export const SelectCustomStyles = {
   container: (provided: any, state: any) => ({
     ...provided,
     width: '10rem',
-    // borderBottom: '1px dotted pink',
-    // color: state.selectProps.menuColor,
-    // padding: 20,
   }),
 }
 

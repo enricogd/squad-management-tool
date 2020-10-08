@@ -43,8 +43,8 @@ export const PlayerAvatar = styled.div`
     /* z-index: 100; */
 
     ${mediaQuery('xs')(`
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 2rem;
+        width: 2rem;
     `)}
 
     span {
@@ -75,8 +75,8 @@ export const Placeholder = styled.div`
     /* z-index: 100; */
 
     ${mediaQuery('xs')(`
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 2rem;
+        width: 2rem;
     `)}
 
     span {
