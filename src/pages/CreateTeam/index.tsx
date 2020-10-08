@@ -1,4 +1,3 @@
-import PlayerAvatar from 'components/PlayerAvatar'
 import PlayerCard from 'components/PlayerCard'
 import RadioInput from 'components/RadioInput'
 import TagInput from 'components/TagInput'
@@ -17,6 +16,7 @@ import { Creators as teamListActions } from 'store/ducks/teamsList'
 import * as S from './styles'
 import { IPlayer } from 'interfaces/player'
 import { routesEnum } from 'routes/routesData'
+import Formation from 'components/Formation'
 
 export default function CreateTeam() {
   const dispatch = useDispatch()
@@ -79,45 +79,9 @@ export default function CreateTeam() {
     history.push(routesEnum.MY_TEAM)
   }
 
-  // TODO: can't handle formations with more than 3 rows
-  const handleFormation = (formation: number[], playersArray: any[]) => {
-    const mutableArr = [...playersArray]
-
-    const array = [0, ...formation]
-
-    const formationOrder = formation.map((row) => {
-      const players = mutableArr.slice(0, row)
-      mutableArr.splice(0, row)
-      return players
-    })
-    const result = formationOrder.map((row, rowIdx) => {
-      return (
-        <S.PlayerRow key={rowIdx}>
-          {row.map((player: IPlayer, playerIdx) => (
-            <PlayerAvatar
-              player={player}
-              key={playerIdx}
-              onClick={setPlayerInPosition}
-              position={
-                rowIdx
-                  ? array[rowIdx] + array[rowIdx - 1] + playerIdx
-                  : playerIdx
-              }
-            />
-          ))}
-        </S.PlayerRow>
-      )
-    })
-    return result
-  }
-
   useEffect(() => {
     setTeam({ ...teamToEdit, tags: inputTags })
   }, [teamToEdit, inputTags])
-
-  // useEffect(() => {
-  //   setInputTags()
-  // }, [])
 
   return (
     <Grid>
@@ -197,23 +161,11 @@ export default function CreateTeam() {
               </Row>
               <Row>
                 <Col size={1}>
-                  <div>
-                    Formation <span>3-4-3</span>
-                  </div>
-                  <S.SoccerField>
-                    {handleFormation([3, 4, 3], team.players)}
-                    <S.PlayerRow>
-                      <PlayerAvatar
-                        key={10}
-                        position={10}
-                        onClick={setPlayerInPosition}
-                        player={team.players[10]}
-                      />
-                    </S.PlayerRow>
-                    <S.FieldCenter />
-                    <S.LineCenter />
-                  </S.SoccerField>
-                  <S.Button onClick={createOrUpdateTeam}>Save</S.Button>
+                  <Formation
+                    team={team}
+                    setPlayerInPosition={setPlayerInPosition}
+                    onSave={createOrUpdateTeam}
+                  />
                 </Col>
                 <Col size={1}>
                   {PLAYERS.map((player, idx) => (

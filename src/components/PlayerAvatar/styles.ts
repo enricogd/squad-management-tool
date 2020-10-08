@@ -5,6 +5,7 @@ export const AvatarContainer = styled.div`
   margin: 0.5rem;
   display: flex;
   justify-content: center;
+  z-index: 10;
 
   ${mediaQuery('xs')(`
         margin: 0;
@@ -63,7 +64,7 @@ export const PlayerAvatar = styled.div`
 
 export const Placeholder = styled.div`
   ${({ theme }) => css`
-    background-color: #ffffff77;
+    background-color: #cc9abe88;
     border-radius: 50%;
     color: ${theme.colors.darkGrey};
     font-weight: 500;
