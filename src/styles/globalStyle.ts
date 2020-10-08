@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		font-family: 'Roboto', sans-serif;
+		cursor: default;
 	  @media (max-width: 768px) {
 		font-size: 14px;
 		}

@@ -8,8 +8,8 @@ export const Section = styled.section`
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    min-height: 100%;
     justify-content: flex-start;
-    /* margin: 1rem; */
   `}
 `
 

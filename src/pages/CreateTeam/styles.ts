@@ -59,7 +59,7 @@ export const SoccerField = styled.div`
       font-size: ${theme.font.sizes.large};
       ${fontType('b')}
       ${mediaQuery('xs')(`
-        font-size: ${theme.font.sizes.small}
+        font-size: ${theme.font.sizes.small};
       `)};
     }
   `}
@@ -72,8 +72,11 @@ export const PlayerRow = styled.div`
     flex: 1;
     flex-direction: row;
     justify-content: center;
-    padding: 1.8rem;
+    padding: 0.5rem;
     text-align: center;
+    ${mediaQuery('xs')(`
+        padding: 0;
+      `)};
   `}
 `
 

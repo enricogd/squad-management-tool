@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     border: 1px solid
       ${(props: Prop) => (props.selected ? theme.colors.error : '#fff')};
     margin-bottom: 0.8rem;
+    cursor: pointer;
   `}
 `
 

@@ -8,7 +8,9 @@ export default function PageTemplate({ children }: { children: JSX.Element }) {
   return (
     <>
       <Header />
-      <S.Main>{children}</S.Main>
+      <S.Background>
+        <S.Main>{children}</S.Main>
+      </S.Background>
       <Footer />
     </>
   )

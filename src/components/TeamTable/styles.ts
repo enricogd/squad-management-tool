@@ -27,7 +27,7 @@ export const Table = styled.table`
           color: ${theme.colors.cellFontHighlight};
 
           ${ButtonsWrapper} {
-            display: flex;
+            opacity: 1;
           }
         }
 
@@ -87,7 +87,9 @@ export const Table = styled.table`
 `
 
 export const ButtonsWrapper = styled.div`
-  display: none;
+  opacity: 0;
+  display: flex;
+
   > * {
     margin-right: 0.5rem;
     cursor: pointer;

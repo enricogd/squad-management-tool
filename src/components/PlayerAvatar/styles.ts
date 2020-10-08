@@ -5,6 +5,10 @@ export const AvatarContainer = styled.div`
   margin: 0.5rem;
   display: flex;
   justify-content: center;
+
+  ${mediaQuery('xs')(`
+        margin: 0;
+      `)};
 `
 
 export const Border = styled.div`

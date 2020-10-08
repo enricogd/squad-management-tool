@@ -28,8 +28,9 @@ export default function CreateTeam() {
   ])
   const [team, setTeam] = useState(teamToEdit)
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
+  const [inputTags, setInputTags] = useState<string[]>([...teamToEdit.tags])
 
-  const { name, description, tags, website, type } = team
+  const { name, description, website, type } = team
 
   const updateTeam = (key: keyof Omit<ITeam, 'id'>) => (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -111,8 +112,12 @@ export default function CreateTeam() {
   }
 
   useEffect(() => {
-    setTeam(teamToEdit)
-  }, [teamToEdit])
+    setTeam({ ...teamToEdit, tags: inputTags })
+  }, [teamToEdit, inputTags])
+
+  // useEffect(() => {
+  //   setInputTags()
+  // }, [])
 
   return (
     <Grid>
@@ -156,30 +161,32 @@ export default function CreateTeam() {
                     value={website}
                     maxLength={100}
                   />
-                  <S.Label>Team type</S.Label>
-                  <Row>
-                    <RadioInput
-                      checked={type === 'real'}
-                      id="team-type"
-                      label="Real"
-                      name="team-type"
-                      onChange={updateTeam('type')}
-                      value="real"
-                    />
-                    <RadioInput
-                      checked={type === 'fantasy'}
-                      id="team-type"
-                      label="Fantasy"
-                      name="team-type"
-                      onChange={updateTeam('type')}
-                      value="fantasy"
-                    />
-                  </Row>
+                  <div>
+                    <S.Label>Team type</S.Label>
+                    <Row>
+                      <RadioInput
+                        checked={type === 'real'}
+                        id="team-type"
+                        label="Real"
+                        name="team-type"
+                        onChange={updateTeam('type')}
+                        value="real"
+                      />
+                      <RadioInput
+                        checked={type === 'fantasy'}
+                        id="team-type"
+                        label="Fantasy"
+                        name="team-type"
+                        onChange={updateTeam('type')}
+                        value="fantasy"
+                      />
+                    </Row>
+                  </div>
                   <TagInput
                     id="team-tags"
                     label="Tags"
-                    onChange={updateTeam('tags')}
-                    value={tags}
+                    tags={inputTags}
+                    setTags={setInputTags}
                   />
                 </Col>
               </Row>

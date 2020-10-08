@@ -1,7 +1,8 @@
-import { InputHTMLAttributes } from 'react'
+import { Dispatch } from 'react'
 
-export interface IInputPrimaryProps
-  extends InputHTMLAttributes<HTMLTextAreaElement> {
+export interface IInputPrimaryProps {
+  tags: string[]
+  setTags: Dispatch<React.SetStateAction<string[]>>
   id: string
   label: string
 }
