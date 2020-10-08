@@ -17,7 +17,6 @@ import * as S from './styles'
 import { IPlayer } from 'interfaces/player'
 import { routesEnum } from 'routes/routesData'
 import Formation from 'components/Formation'
-import { DEFAULT_PLAYERS_ARRAY } from 'utils/team'
 
 export default function CreateTeam() {
   const dispatch = useDispatch()
@@ -31,7 +30,7 @@ export default function CreateTeam() {
   const [selectedPlayer, setSelectedPlayer] = useState<IPlayer>()
   const [inputTags, setInputTags] = useState<string[]>([...teamToEdit.tags])
   const [formation, setFormation] = useState<number[]>([3, 4, 3])
-  console.log({ formation })
+  console.log({ team })
 
   const { name, description, website, type } = team
 
@@ -85,11 +84,6 @@ export default function CreateTeam() {
   useEffect(() => {
     setTeam({ ...teamToEdit, tags: inputTags })
   }, [teamToEdit, inputTags])
-
-  useEffect(() => {
-    setTeam({ ...teamToEdit, players: DEFAULT_PLAYERS_ARRAY })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formation])
 
   return (
     <Grid>
@@ -171,6 +165,7 @@ export default function CreateTeam() {
                 <Col size={1}>
                   <Formation
                     team={team}
+                    setTeam={setTeam}
                     formation={formation}
                     setFormation={setFormation}
                     setPlayerInPosition={setPlayerInPosition}

@@ -4,6 +4,7 @@ import React from 'react'
 import * as S from './styles'
 import { IFormationProps, ISelectOption } from './types'
 import Select from 'react-select'
+import { DEFAULT_PLAYERS_ARRAY } from 'utils/team'
 
 const VALID_FORMATIONS = [
   [3, 4, 3],
@@ -15,14 +16,20 @@ const VALID_FORMATIONS = [
 ]
 
 export default function Formation(props: IFormationProps) {
-  const { team, setPlayerInPosition, onSave, formation, setFormation } = props
+  const {
+    team,
+    setPlayerInPosition,
+    onSave,
+    formation,
+    setFormation,
+    setTeam,
+  } = props
 
   const getFormationOption = (value: number[]): ISelectOption => ({
     value,
     label: value.join(' - '),
   })
   const formationOptions = VALID_FORMATIONS.map(getFormationOption)
-  console.log(formationOptions)
 
   // TODO: can't handle formations with more than 3 rows
   const handleFormation = (formation: number[], playersArray: any[]) => {
@@ -59,6 +66,7 @@ export default function Formation(props: IFormationProps) {
 
   const handleSelectChange = (opt: ISelectOption) => {
     setFormation(opt.value)
+    setTeam({ ...team, formation, players: DEFAULT_PLAYERS_ARRAY })
   }
 
   return (
